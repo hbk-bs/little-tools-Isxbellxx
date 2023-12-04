@@ -4,9 +4,12 @@ console.log(colorInput);
 
 let paintColor = '#ff6347';
 colorInput.value = paintColor;
+let spaceX = 20, spaceY = 20, diam = 10;
 function setup() {
-    const canvas = createCanvas(300, 200);
+    const canvas = createCanvas(400, 400);
     canvas.parent('sketch');
+    noStroke();
+
     background(225);
     saveButton.addEventListener("click",()=>{
          console.log('clicked');
@@ -20,6 +23,24 @@ function setup() {
 }
 
 function draw (){
+    background(220);
+    
+    //horizontal row
+    for(let x = 20; x < width; x += spaceX){
+        //vertical row 
+        for(let y = 20; y < height; y += spaceY){
+            let d = dist(mouseX, mouseY, x, y);
+            if(d < 100){
+                fill(255, 0, 0, 100);
+                diam = map(d, 0, 100, 50, 1);
+            } else {
+                fill(255);
+                diam = 10;
+            }
+            ellipse (x, y, diam);
+
+        }
+    }
     
 }
 
