@@ -4,7 +4,10 @@ console.log(colorInput);
 
 let paintColor = '#ff6347';
 colorInput.value = paintColor;
-let spaceX = 20, spaceY = 20, diam = 10;
+let spaceX = 20, spaceY = 20, diam = 10
+var slider;
+let sliderValue = 1;
+
 function setup() {
     const canvas = createCanvas(400, 400);
     canvas.parent('sketch');
@@ -18,20 +21,22 @@ function setup() {
     colorInput.addEventListener("input",()=>{
         console.log(colorInput.value);
         paintColor=colorInput.value;
-    });
-       
+    });    
+ slider = createSlider(0, 255, sliderValue);
+ slider.position (850, 100);
+ slider.size(400);
+   
 }
 
 function draw (){
-    background(220);
-    
+background(slider.value());
     //horizontal row
     for(let x = 20; x < width; x += spaceX){
         //vertical row 
         for(let y = 20; y < height; y += spaceY){
             let d = dist(mouseX, mouseY, x, y);
             if(d < 100){
-                fill(255, 0, 0, 100);
+                fill(paintColor);
                 diam = map(d, 0, 100, 50, 1);
             } else {
                 fill(255);
