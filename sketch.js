@@ -1,5 +1,6 @@
 const saveButton = document.querySelector ('button#save');
 const colorInput = document.querySelector('input#color');
+sizeSlider = document.querySelector("#slider");
 console.log(colorInput);
 
 let paintColor = '#ff6347';
@@ -25,11 +26,11 @@ function setup() {
  slider = createSlider(0, 255, sliderValue);
  slider.position (850, 100);
  slider.size(400);
-   
+ sizeSlider.addEventListener("change", () => brushWidth = sizeSlider.value);
+ 
 }
 
 function draw (){
-background(slider.value());
     //horizontal row
     for(let x = 20; x < width; x += spaceX){
         //vertical row 
