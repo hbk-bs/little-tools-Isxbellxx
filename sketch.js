@@ -10,7 +10,7 @@ var slider;
 let sliderValue = 1;
 
 function setup() {
-    const canvas = createCanvas(400, 400);
+    const canvas = createCanvas(900, 900);
     canvas.parent('sketch');
     noStroke();
 
